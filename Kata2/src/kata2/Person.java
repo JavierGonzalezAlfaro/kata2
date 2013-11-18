@@ -1,5 +1,7 @@
 package kata2;
 
+import java.util.HashMap;
+
 public class Person {
     private String name;
     private int age;
@@ -34,5 +36,22 @@ public class Person {
         Person.type = type;
     }
     
+    public static String getFrecuency(HashMap <Person,Integer> histogram, Person[] preguntas ){
+        int maximo = 0;
+        String nombre = "";
+        
+        for (int i = 0; i < preguntas.length; i++) {
+            histogram.put(preguntas[i],(histogram.get(preguntas[i]))+1);
+        }
+        
+        for (int i = 0; i < preguntas.length; i++) {
+            if(maximo<histogram.get(preguntas[i])){
+                maximo = histogram.get(preguntas[i]);
+                nombre = preguntas[i].getName();
+            }
+            
+        }
+        return "El que mas ha preguntado es: "+nombre+" y lo ha hecho: "+maximo+" veces.";
+    }
     
 }
